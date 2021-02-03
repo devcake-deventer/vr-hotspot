@@ -1,6 +1,6 @@
 extend type Query {
-    hotspots: [Hotspot!] @all
-    videos: [Video!] @all
+    hotspots: [Hotspot!] @all(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+    videos: [Video!] @all(model: "devcake\\hotspotpackage\\Models\\Video")
 }
 
 type Video {
