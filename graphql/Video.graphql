@@ -1,0 +1,6 @@
+type Video {
+    id: ID!
+    file_path: String!
+    # Relationships
+    hotspots: [Hotspot] @belongsToMany
+}

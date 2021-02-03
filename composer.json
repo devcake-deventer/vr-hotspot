@@ -1,0 +1,42 @@
+{
+    "name": "devcake/hotspotpackage",
+    "description": "Package that contains all models and migrations required to support hotspots in our VR backends",
+    "keywords": [
+        "laravel",
+        "graphql",
+        "lighthouse",
+        "hotspots",
+        "vr"
+    ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mike Slinkman",
+            "email": "m.slinkman@devcake.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "devcake\\hotspotpackage\\": "src/",
+            "devcake\\hotspotpackage\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "devcake\\hotspotpackage\\Providers\\HotspotServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "nuwave/lighthouse": "^5.2"
+    }
+}

@@ -1,0 +1,10 @@
+type Hotspot {
+    id: ID!
+    x: Float!
+    y: Float!
+    z: Float!
+    frame_in: Int!
+    frame_out: Int!
+    # Relationships
+    video: Video @belongsTo
+}
