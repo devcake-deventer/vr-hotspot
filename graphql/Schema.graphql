@@ -1,4 +1,4 @@
-extend type Query {
+extend type Query @namespace(field: "devcake\\hotspotpackage\\src\\Models" ) {
     hotspots: [Hotspot!] @all
     videos: [Video!] @all
 }
