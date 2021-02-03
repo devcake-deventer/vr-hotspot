@@ -23,7 +23,7 @@ class HotspotServiceProvider extends ServiceProvider
             }
         );
 
-        //$this->registerModels();
+        $this->registerModels();
     }
 
     /**
