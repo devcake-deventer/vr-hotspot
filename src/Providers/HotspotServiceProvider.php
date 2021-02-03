@@ -19,7 +19,7 @@ class HotspotServiceProvider extends ServiceProvider
         app('events')->listen(
             BuildSchemaString::class,
             function (): string {
-                return file_get_contents(__DIR__ . "../../graphql/Schema.graphql");
+                return file_get_contents(__DIR__ . "/../../graphql/Schema.graphql");
             }
         );
     }
