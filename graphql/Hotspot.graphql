@@ -1,3 +1,7 @@
+extend type Query {
+    hotspots: [Hotspot!] @all
+}
+
 type Hotspot {
     id: ID!
     x: Float!

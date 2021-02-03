@@ -1,3 +1,7 @@
+extend type Query {
+    videos: [Video!] @all
+}
+
 type Video {
     id: ID!
     file_path: String!
