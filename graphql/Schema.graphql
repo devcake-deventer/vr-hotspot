@@ -1,22 +1,95 @@
 extend type Query {
-    hotspots: [Hotspot!] @all(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+    video(id: ID! @eq): Video! @find(model: "devcake\\hotspotpackage\\Models\\Video")
+    """
+    Gets all videos
+    """
     videos: [Video!] @all(model: "devcake\\hotspotpackage\\Models\\Video")
+    """
+    Gets the hotspot specified by the id provided
+    """
+    hotspot(id: ID! @eq): Hotspot! @find(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+    """
+    Gets all hotspots for all videos
+    """
+    hotspots: [Hotspot!] @all(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+}
+
+extend type Mutation {
+    """
+    Mutation to create a new hotspot in the database all non relational parameters are required
+    """
+    createHotspot(x: Float! y: Float! z: Float! frame_in: Int! frame_out: Int! video: ConnectVideoBelongsTo): Hotspot @create(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+    """
+    Mutation to update the hotspot identified by the ID provided. id is the only required parameter
+    """
+    updateHotspot(id: ID! x: Float y: Float z: Float frame_in: Int frame_out: Int video: ConnectVideoBelongsTo): Hotspot @update(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+    """
+    Mutation to delete a hotspot, the hotspot to delete is identified by the id which is a required parameter
+    """
+    deleteHotspot(id: ID!): Hotspot @delete(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+
+    """
+    Mutation to create a new video in the database all non relational parameters are required
+    """
+    createVideo(file_path: String! hotspots: ConnectHotspotsBelongsToMany): Video @create(model: "devcake\\hotspotpackage\\Models\\Video")
+    """
+    Mutation to update the video identified by provided id. id is the only required parameter
+    """
+    updateVideo(id: ID! file_path: String hotspots: ConnectHotspotsBelongsToMany): Video @update(model: "devcake\\hotspotpackage\\Models\\Video")
+    """
+    Mutation to delete a video, the video to delete is identified by the id which is a required parameter
+    """
+    deleteVideo(id: ID!): Video @delete(model: "devcake\\hotspotpackage\\Models\\Video")
 }
 
 type Video {
     id: ID!
+    """
+    path to the location of the file
+    """
     file_path: String!
     # Relationships
+    """
+    retrievies all the hotspots for the video
+    """
     hotspots: [Hotspot] @belongsToMany
 }
 
 type Hotspot {
     id: ID!
+    """
+    x position in world space
+    """
     x: Float!
+    """
+    y postiion in world space
+    """
     y: Float!
+    """
+    z postiion in world space
+    """
     z: Float!
+    """
+    first frame the hotspot should be placed on the provided xyz position
+    """
     frame_in: Int!
+    """
+    last frame the hotspot should be palced on the providied xyz position
+    """
     frame_out: Int!
     # Relationships
+    """
+    identifies the video to which the hotspot belongs
+    """
     video: Video @belongsTo
+}
+
+input ConnectVideoBelongsTo {
+    connect: ID!
+    disconnect: ID!
+}
+
+input ConnectHotspotsBelongsToMany {
+    connect: [ID!]
+    disconnect: [ID!]
 }

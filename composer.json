@@ -1,5 +1,6 @@
 {
     "name": "devcake/hotspotpackage",
+    "license": "MIT",
     "description": "Package that contains all models and migrations required to support hotspots in our VR backends",
     "keywords": [
         "laravel",

@@ -2,10 +2,13 @@
 
 namespace devcake\hotspotpackage\Tests;
 
-use devcake\hotspotpackage\HotspotServiceProvider;
+use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
+use devcake\hotspotpackage\Providers\HotspotServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
+    use MakesGraphQLRequests;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -17,6 +20,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
         return [
             HotspotServiceProvider::class,
         ];
+    }
+
+    protected function graphQLEndpointUrl(): string
+    {
+        return '/graphql';
     }
 
     protected function getEnvironmentSetUp($app)
