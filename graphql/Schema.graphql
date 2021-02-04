@@ -7,7 +7,7 @@ extend type Query {
     """
     Gets the hotspot specified by the id provided
     """
-    hotspot(id: ID! @eq): Hotspot! @find(model: "devcake\\hotspotpackage\\Models\\Video")
+    hotspot(id: ID! @eq): Hotspot! @find(model: "devcake\\hotspotpackage\\Models\\Hotspot")
     """
     Gets all hotspots for all videos
     """
