@@ -15,12 +15,13 @@ class CreateHotspotsTable extends Migration
     {
         Schema::create('hotspots', function (Blueprint $table) {
             $table->id();
-            $table->float('x');
-            $table->float('y');
-            $table->float('z');
-            $table->integer('frame_in');
-            $table->integer('frame_out');
-            $table->foreignId('video_id');
+            $table->float('x')->nullable();
+            $table->float('y')->nullable();
+            $table->float('z')->nullable();
+            $table->string('action')->nullable();
+            $table->integer('frame_in')->nullable();
+            $table->integer('frame_out')->nullable();
+            $table->foreignId('video_id')->nullable();
             $table->timestamps();
 
             $table->foreign('video_id')->references('id')->on('videos');
