@@ -18,11 +18,11 @@ extend type Mutation {
     """
     Mutation to create a new hotspot in the database all non relational parameters are required
     """
-    createHotspot(x: Float! y: Float! z: Float! frame_in: Int! frame_out: Int! video: ConnectVideoBelongsTo): Hotspot @create(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+    createHotspot(x: Float y: Float z: Float frame_in: Int frame_out: Int action: String video: ConnectVideoBelongsTo): Hotspot @create(model: "devcake\\hotspotpackage\\Models\\Hotspot")
     """
     Mutation to update the hotspot identified by the ID provided. id is the only required parameter
     """
-    updateHotspot(id: ID! x: Float y: Float z: Float frame_in: Int frame_out: Int video: ConnectVideoBelongsTo): Hotspot @update(model: "devcake\\hotspotpackage\\Models\\Hotspot")
+    updateHotspot(id: ID! x: Float y: Float z: Float frame_in: Int frame_out: Int action: String video: ConnectVideoBelongsTo): Hotspot @update(model: "devcake\\hotspotpackage\\Models\\Hotspot")
     """
     Mutation to delete a hotspot, the hotspot to delete is identified by the id which is a required parameter
     """
@@ -69,6 +69,10 @@ type Hotspot {
     z postiion in world space
     """
     z: Float!
+    """
+    string to identify the action that should be taken
+    """
+    action: String
     """
     first frame the hotspot should be placed on the provided xyz position
     """
