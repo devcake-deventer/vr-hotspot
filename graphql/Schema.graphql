@@ -1,5 +1,12 @@
 extend type Query {
+    """
+    Gets video by ID
+    """
     video(id: ID! @eq): Video! @find(model: "devcake\\hotspotpackage\\Models\\Video")
+    """
+    Get video by URL
+    """
+    videoByURl(file_path: String!): Video @field(resolver: "devcake\\hotspotpackage\\GraphQL\\Queries\\GetVideoByURL@resolve")
     """
     Gets all videos
     """
