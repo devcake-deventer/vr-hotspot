@@ -6,7 +6,7 @@ extend type Query {
     """
     Get video by URL
     """
-    videoByURl(file_path: String!): Video @field(resolver: "devcake\\hotspotpackage\\GraphQL\\Queries\\GetVideoByURL@resolve")
+    videoByURL(file_path: String!): Video @field(resolver: "devcake\\hotspotpackage\\GraphQL\\Queries\\GetVideoByURL@resolve")
     """
     Gets all videos
     """
